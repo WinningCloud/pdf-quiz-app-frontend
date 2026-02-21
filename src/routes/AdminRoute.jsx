@@ -6,7 +6,7 @@ const AdminRoute = () => {
 
   if (loading) return <div>Loading...</div>;
   // Checks both: is logged in AND is an admin
-  return user && user.is_admin ? <Outlet /> : <Navigate to="/dashboard" />;
+  return user && (user.is_admin || user.is_mentor) ? <Outlet /> : <Navigate to="/dashboard" />;
 };
 
 export default AdminRoute;

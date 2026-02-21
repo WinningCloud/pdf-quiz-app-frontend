@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-export default function QuizManagement() {
+export default function StudentMyQuizzes() {
   const [quizzes, setQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -22,13 +22,13 @@ export default function QuizManagement() {
   const [cancellingId, setCancellingId] = useState(null);
   const [toast, showToast] = useToast();
   const [confirm, setConfirm] = useState(null);
-  const [shareModal, setShareModal] = useState(null);
+  const [shareModal, setShareModal] = useState(null); // { quizId, shareCode, shared }
   const [copiedId, setCopiedId] = useState(null);
   const navigate = useNavigate();
 
   const fetchQuizzes = async () => {
     try {
-      const res = await api.get('/admin/quiz/list');
+      const res = await api.get('/student/my-quizzes');
       setQuizzes(res.data);
     } catch {
       console.error("Failed to fetch quizzes");
@@ -39,7 +39,6 @@ export default function QuizManagement() {
 
   useEffect(() => { fetchQuizzes(); }, []);
 
-  // Poll for generating quizzes progress
   useEffect(() => {
     const hasGenerating = quizzes.some(q => q.status === 'generating');
     if (hasGenerating) {
@@ -51,17 +50,17 @@ export default function QuizManagement() {
   const handlePublish = async (quizId) => {
     setConfirm({
       title: 'Publish Quiz',
-      message: 'Make this quiz live for all students?',
+      message: 'Publish this quiz? It will become available to take.',
       confirmText: 'Publish',
       onConfirm: async () => {
         setConfirm(null);
         setPublishingId(quizId);
         try {
-          await api.post(`/admin/quiz/${quizId}/publish`);
+          await api.post(`/student/my-quiz/${quizId}/publish`);
           showToast('success', 'Quiz published successfully');
           fetchQuizzes();
         } catch {
-          showToast('error', 'Publish failed. Ensure all questions have answers.');
+          showToast('error', 'Publish failed.');
         } finally {
           setPublishingId(null);
         }
@@ -72,14 +71,14 @@ export default function QuizManagement() {
   const handleUnpublish = async (quizId) => {
     setConfirm({
       title: 'Unpublish Quiz',
-      message: 'Unpublish this quiz? Students will no longer be able to access it.',
+      message: 'Unpublish this quiz?',
       confirmText: 'Unpublish',
       danger: true,
       onConfirm: async () => {
         setConfirm(null);
         setUnpublishingId(quizId);
         try {
-          await api.post(`/admin/quiz/${quizId}/unpublish`);
+          await api.post(`/student/my-quiz/${quizId}/unpublish`);
           showToast('success', 'Quiz unpublished');
           fetchQuizzes();
         } catch (err) {
@@ -101,7 +100,7 @@ export default function QuizManagement() {
         setConfirm(null);
         setDeletingId(quizId);
         try {
-          await api.delete(`/admin/quiz/${quizId}`);
+          await api.delete(`/student/my-quiz/${quizId}`);
           showToast('success', 'Quiz deleted');
           fetchQuizzes();
         } catch (err) {
@@ -123,7 +122,7 @@ export default function QuizManagement() {
         setConfirm(null);
         setCancellingId(quizId);
         try {
-          await api.post(`/admin/quiz/${quizId}/cancel`);
+          await api.post(`/student/my-quiz/${quizId}/cancel`);
           showToast('success', 'Generation cancelled');
           fetchQuizzes();
         } catch (err) {
@@ -135,6 +134,32 @@ export default function QuizManagement() {
     });
   };
 
+  const handleShare = async (quiz) => {
+    try {
+      const res = await api.post(`/student/my-quiz/${quiz.id}/share`);
+      if (res.data.shared) {
+        setShareModal({ quizId: quiz.id, shareCode: res.data.share_code, shared: true });
+      } else {
+        // Sharing was disabled
+        showToast('success', 'Share link removed');
+        fetchQuizzes();
+      }
+    } catch (err) {
+      showToast('error', 'Failed to toggle sharing');
+    }
+  };
+
+  const getShareUrl = (shareCode) => {
+    return `${window.location.origin}/shared/${shareCode}`;
+  };
+
+  const copyShareLink = (shareCode) => {
+    navigator.clipboard.writeText(getShareUrl(shareCode));
+    setCopiedId(shareCode);
+    showToast('success', 'Link copied to clipboard!');
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
   const filtered = quizzes.filter(q => {
     const matchSearch = !search || 
       q.title?.toLowerCase().includes(search.toLowerCase()) || 
@@ -143,29 +168,6 @@ export default function QuizManagement() {
       (statusFilter === 'failed' && (q.status === 'failed' || q.status === 'cancelled'));
     return matchSearch && matchStatus;
   });
-
-  const handleShare = async (quiz) => {
-    try {
-      const res = await api.post(`/admin/quiz/${quiz.id}/share`);
-      if (res.data.shared) {
-        setShareModal({ quizId: quiz.id, shareCode: res.data.share_code, shared: true });
-      } else {
-        showToast('success', 'Share link removed');
-        fetchQuizzes();
-      }
-    } catch {
-      showToast('error', 'Failed to toggle sharing');
-    }
-  };
-
-  const getShareUrl = (shareCode) => `${window.location.origin}/shared/${shareCode}`;
-
-  const copyShareLink = (shareCode) => {
-    navigator.clipboard.writeText(getShareUrl(shareCode));
-    setCopiedId(shareCode);
-    showToast('success', 'Link copied to clipboard!');
-    setTimeout(() => setCopiedId(null), 2000);
-  };
 
   const statusCounts = {
     all: quizzes.length,
@@ -191,11 +193,11 @@ export default function QuizManagement() {
       {/* Header */}
       <header className="flex justify-between items-end">
         <div>
-          <h1 className="text-3xl font-black text-slate-100 font-display">Quiz Management</h1>
-          <p className="text-slate-400 font-medium">Review, publish, unpublish, or remove AI-generated quizzes.</p>
+          <h1 className="text-3xl font-black text-slate-100 font-display">My Quizzes</h1>
+          <p className="text-slate-400 font-medium">Manage quizzes you've created from your PDFs.</p>
         </div>
         <button 
-          onClick={() => navigate('/admin/pdfs')}
+          onClick={() => navigate('/create-quiz')}
           className="bg-teal-500 text-slate-900 px-6 py-3 rounded-2xl font-black hover:bg-teal-400 transition shadow-xl shadow-teal-900/30 flex items-center gap-2 active:scale-[0.97]"
         >
           <Plus className="w-5 h-5" /> Create New Quiz
@@ -333,7 +335,6 @@ export default function QuizManagement() {
                 {quiz.total_questions} Questions
               </div>
               <div className="flex gap-2">
-                {/* Cancel button for generating */}
                 {quiz.status === 'generating' && (
                   <button
                     onClick={() => handleCancel(quiz.id)}
@@ -345,10 +346,9 @@ export default function QuizManagement() {
                   </button>
                 )}
 
-                {/* View/Edit button */}
                 {(quiz.status === 'generated' || quiz.status === 'published') && (
                   <button 
-                    onClick={() => navigate(`/admin/quiz-editor/${quiz.id}`)}
+                    onClick={() => navigate(`/quiz-editor/${quiz.id}`)}
                     className="p-2 bg-slate-800 text-slate-200 rounded-xl hover:bg-teal-500 hover:text-slate-900 transition"
                     title="View & Edit"
                   >
@@ -356,17 +356,15 @@ export default function QuizManagement() {
                   </button>
                 )}
 
-                {/* Publish / Review button */}
                 {quiz.status === 'generated' && (
                   <button
-                    onClick={() => navigate(`/admin/quiz-editor/${quiz.id}`)}
+                    onClick={() => navigate(`/quiz-editor/${quiz.id}`)}
                     className="bg-emerald-400 text-slate-900 px-4 py-2 rounded-xl text-xs font-black hover:bg-emerald-300 transition flex items-center gap-2"
                   >
                     <Send className="w-3 h-3" /> Review & Publish
                   </button>
                 )}
 
-                {/* Unpublish button */}
                 {quiz.status === 'published' && (
                   <button
                     onClick={() => handleUnpublish(quiz.id)}
@@ -388,7 +386,7 @@ export default function QuizManagement() {
                <ClipboardList className="w-10 h-10 text-slate-600" />
             </div>
             <h3 className="text-lg font-bold text-slate-100">{search ? 'No quizzes match your search' : 'No quizzes yet'}</h3>
-            <p className="text-slate-400">{search ? 'Try a different search or filter.' : 'Generate a quiz from your PDF library to see it here.'}</p>
+            <p className="text-slate-400">{search ? 'Try a different search or filter.' : 'Create a quiz from a PDF to see it here.'}</p>
           </div>
         )}
       </div>
