@@ -1,5 +1,5 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FileUp, ClipboardList, BarChart3, LogOut, KeyRound, Users, User, GraduationCap, School, FilePlus, Trophy } from 'lucide-react';
+﻿import { Link, Outlet, useLocation } from 'react-router-dom';
+import { LayoutDashboard, FileUp, ClipboardList, BarChart3, LogOut, KeyRound, Users, User, GraduationCap, School, FilePlus, Trophy, ShieldCheck } from 'lucide-react';
 import Logo from '../common/Logo';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
@@ -19,6 +19,7 @@ export default function AdminLayout() {
       { name: 'Quiz Management', path: '/admin/quizzes', icon: ClipboardList },
       { name: 'User Management', path: '/admin/users', icon: Users },
       { name: 'Mentors', path: '/admin/mentors', icon: GraduationCap },
+      { name: 'Admins', path: '/admin/admins', icon: ShieldCheck },
     ] : [
       { name: 'Create Quiz', path: '/admin/create-quiz', icon: FilePlus },
       { name: 'My Quizzes', path: '/admin/my-quizzes', icon: ClipboardList },

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+﻿import { Routes, Route } from 'react-router-dom';
 import LandingPage from '../pages/LandingPage.jsx';
 import Login from '../pages/auth/Login.jsx';
 import Register from '../pages/auth/Register';
@@ -24,6 +24,7 @@ import CompleteProfile from '../pages/auth/CompleteProfile.jsx';
 import MyProfile from '../pages/shared/MyProfile.jsx';
 import SharedQuiz from '../pages/shared/SharedQuiz.jsx';
 import MentorManagement from '../pages/admin/MentorManagement.jsx';
+import AdminManagement from '../pages/admin/AdminManagement.jsx';
 import Classrooms from '../pages/admin/Classrooms.jsx';
 import ClassroomDetail from '../pages/admin/ClassroomDetail.jsx';
 import ClassroomAnalytics from '../pages/admin/ClassroomAnalytics.jsx';
@@ -70,6 +71,7 @@ const AppRoutes = () => {
           <Route path="/admin/quiz-editor/:id" element={<QuizEditor />} />
           <Route path="/admin/users" element={<UserManagement />} />
           <Route path="/admin/mentors" element={<MentorManagement />} />
+          <Route path="/admin/admins" element={<AdminManagement />} />
           <Route path="/admin/classrooms" element={<Classrooms />} />
           <Route path="/admin/classroom/:classroomId" element={<ClassroomDetail />} />
           <Route path="/admin/classroom/:classroomId/analytics" element={<ClassroomAnalytics />} />
