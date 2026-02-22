@@ -155,7 +155,7 @@ export default function AdminManagement() {
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap gap-3 items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
             <ShieldCheck className="text-teal-400" size={28}/> Admin Management

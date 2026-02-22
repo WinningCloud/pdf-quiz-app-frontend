@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
 import {
@@ -141,7 +141,7 @@ export default function StudentClassrooms() {
                     <span>Mentor: {c.mentor_name}</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 ml-4">
+                <div className="flex items-center gap-2 ml-0 sm:ml-4 mt-2 sm:mt-0">
                   <button onClick={() => toggleQuizzes(c.id)}
                     className="px-4 py-2 bg-teal-500/10 text-teal-400 border border-teal-500/30 rounded-xl text-sm font-bold hover:bg-teal-500/20 transition flex items-center gap-1.5">
                     <BookOpen size={15}/> Quizzes
@@ -163,7 +163,7 @@ export default function StudentClassrooms() {
                   ) : (
                     <div className="grid md:grid-cols-2 gap-3">
                       {quizzes[c.id].map(q => (
-                        <div key={q.id} className="flex items-center justify-between p-3.5 bg-slate-800/50 rounded-xl">
+                        <div key={q.id} className="flex flex-wrap items-center justify-between p-3.5 bg-slate-800/50 rounded-xl">
                           <div className="flex-1 min-w-0 mr-3">
                             <div className="font-bold text-sm text-slate-200 truncate">{q.title}</div>
                             <div className="text-xs text-slate-500 mt-0.5">{q.total_questions} questions</div>

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap");
 
 :root {
@@ -64,7 +64,7 @@ body {
   box-shadow: 0 0 0 6px var(--ring);
 }
 
-/* ═══════════════════════ ANIMATIONS ═══════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• ANIMATIONS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(12px); }
@@ -245,7 +245,7 @@ body {
   opacity: 1;
 }
 
-/* ═══════════════════════ SCROLL REVEAL ═══════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• SCROLL REVEAL â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .reveal-section {
   opacity: 0;
   transform: translateY(40px);
@@ -254,4 +254,28 @@ body {
 .reveal-section.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/*  MOBILE RESPONSIVE  */
+
+/* Ensure pt-18 works (mobile top bar offset) */
+.pt-18 {
+  padding-top: 4.5rem;
+}
+
+/* Better tap targets on mobile */
+@media (max-width: 640px) {
+  .hover-lift:hover {
+    transform: none;
+  }
+  
+  /* Reduce animation intensity on mobile */
+  .reveal-section {
+    transform: translateY(20px);
+  }
+
+  /* Ensure modals are full-width on mobile */
+  .fixed.inset-0 > div {
+    max-width: calc(100vw - 1.5rem);
+  }
 }

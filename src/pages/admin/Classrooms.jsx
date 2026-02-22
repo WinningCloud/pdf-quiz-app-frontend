@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
@@ -85,7 +85,7 @@ export default function Classrooms() {
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap gap-3 items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
             <School className="text-teal-400" size={28}/> Classrooms
@@ -121,7 +121,7 @@ export default function Classrooms() {
             <div key={c.id} className="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 hover:border-teal-500/30 transition group">
               <div className="flex items-start justify-between mb-3">
                 <h3 className="text-lg font-bold text-slate-100 truncate flex-1">{c.name}</h3>
-                <button onClick={() => handleDelete(c)} className="p-1.5 text-slate-600 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition opacity-0 group-hover:opacity-100">
+                <button onClick={() => handleDelete(c)} className="p-1.5 text-slate-600 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition sm:opacity-0 sm:group-hover:opacity-100">
                   <Trash2 size={15}/>
                 </button>
               </div>

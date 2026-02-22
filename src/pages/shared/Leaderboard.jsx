@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext, useMemo } from 'react';
+﻿import { useState, useEffect, useContext, useMemo } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import api from '../../api/axios';
 import { Trophy, ChevronDown, Crown, Star, Users, Flame, TrendingUp, Zap } from 'lucide-react';
 
-/* ─── Deterministic avatar gradient from name ─── */
+/* â”€â”€â”€ Deterministic avatar gradient from name â”€â”€â”€ */
 const AVATAR_GRADIENTS = [
   'from-rose-500 to-pink-600',
   'from-violet-500 to-purple-600',
@@ -22,7 +22,7 @@ function nameGradient(name) {
   return AVATAR_GRADIENTS[Math.abs(hash) % AVATAR_GRADIENTS.length];
 }
 
-/* ─── Helper: get avatar URL ─── */
+/* â”€â”€â”€ Helper: get avatar URL â”€â”€â”€ */
 function avatarUrl(pic) {
   if (!pic) return null;
   if (pic.startsWith('http')) return pic;
@@ -30,7 +30,7 @@ function avatarUrl(pic) {
   return `${base}${pic}`;
 }
 
-/* ─── Stat Pill ─── */
+/* â”€â”€â”€ Stat Pill â”€â”€â”€ */
 function StatPill({ label, value, accent = false }) {
   return (
     <div className="text-center px-2">
@@ -42,9 +42,9 @@ function StatPill({ label, value, accent = false }) {
   );
 }
 
-/* ─── Avatar component ─── */
+/* â”€â”€â”€ Avatar component â”€â”€â”€ */
 function Avatar({ entry, size = 'md' }) {
-  const dim = size === 'lg' ? 'w-16 h-16 text-xl' : size === 'md' ? 'w-10 h-10 text-sm' : 'w-8 h-8 text-xs';
+  const dim = size === 'lg' ? 'w-12 h-12 sm:w-16 sm:h-16 text-xl' : size === 'md' ? 'w-10 h-10 text-sm' : 'w-8 h-8 text-xs';
   const ringDim = size === 'lg' ? 'ring-[3px]' : 'ring-2';
   const ringColor = entry.rank === 1 ? 'ring-yellow-400/60' : entry.rank === 2 ? 'ring-slate-300/50' : entry.rank === 3 ? 'ring-amber-500/50' : 'ring-slate-600/40';
   const url = avatarUrl(entry.profile_picture);
@@ -58,7 +58,7 @@ function Avatar({ entry, size = 'md' }) {
   );
 }
 
-/* ─── Rank badge ─── */
+/* â”€â”€â”€ Rank badge â”€â”€â”€ */
 function RankBadge({ rank }) {
   if (rank === 1) return <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center shadow-lg shadow-yellow-500/20"><Crown size={16} className="text-yellow-900" /></div>;
   if (rank === 2) return <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center shadow-lg shadow-slate-400/20"><Crown size={16} className="text-slate-700" /></div>;
@@ -66,7 +66,7 @@ function RankBadge({ rank }) {
   return <div className="w-8 h-8 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-xs font-black text-slate-400">{rank}</div>;
 }
 
-/* ─── Top-3 Podium Card ─── */
+/* â”€â”€â”€ Top-3 Podium Card â”€â”€â”€ */
 function PodiumCard({ entry, place, isMe }) {
   const configs = {
     1: { height: 'h-36', glow: 'shadow-yellow-500/10', border: 'border-yellow-500/30', accentText: 'text-yellow-400', bg: 'from-yellow-500/8 via-amber-500/5 to-transparent', crown: 'text-yellow-400', order: 'order-2', translate: '-translate-y-4' },
@@ -104,13 +104,13 @@ function PodiumCard({ entry, place, isMe }) {
       </div>
       {/* Podium bar */}
       <div className={`w-full ${c.height} rounded-b-xl bg-gradient-to-b from-slate-800/60 to-slate-900/40 border-x border-b ${c.border} -mt-2 flex items-end justify-center pb-3`}>
-        <span className={`text-3xl font-black ${c.accentText} opacity-20`}>{place}</span>
+        <span className={`text-xl sm:text-3xl font-black ${c.accentText} opacity-20`}>{place}</span>
       </div>
     </div>
   );
 }
 
-/* ─── Leaderboard Row ─── */
+/* â”€â”€â”€ Leaderboard Row â”€â”€â”€ */
 function LeaderboardRow({ entry, isMe, maxScore, index }) {
   const barWidth = maxScore > 0 ? (entry.average_score / maxScore) * 100 : 0;
   const isTop3 = entry.rank <= 3;
@@ -159,11 +159,11 @@ function LeaderboardRow({ entry, isMe, maxScore, index }) {
   );
 }
 
-/* ─── Empty State ─── */
+/* â”€â”€â”€ Empty State â”€â”€â”€ */
 function EmptyState({ message }) {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-slate-500">
-      <div className="w-20 h-20 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center mb-4">
+      <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center mb-4">
         <Trophy size={36} className="text-slate-600" />
       </div>
       <p className="text-sm font-medium">{message}</p>
@@ -172,13 +172,13 @@ function EmptyState({ message }) {
   );
 }
 
-/* ─── Summary Stats Bar ─── */
+/* â”€â”€â”€ Summary Stats Bar â”€â”€â”€ */
 function SummaryBar({ data }) {
   const totalAttempts = data.reduce((s, e) => s + e.attempts, 0);
   const avgAll = data.length > 0 ? (data.reduce((s, e) => s + e.average_score, 0) / data.length).toFixed(1) : 0;
   const topScore = data.length > 0 ? Math.max(...data.map(e => e.best_score)) : 0;
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
       {[
         { icon: Users, label: 'Participants', value: data.length, color: 'text-blue-400', bg: 'bg-blue-500/10 border-blue-500/20' },
         { icon: TrendingUp, label: 'Avg Score', value: `${avgAll}%`, color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
@@ -196,7 +196,7 @@ function SummaryBar({ data }) {
   );
 }
 
-/* ─── Main Component ─── */
+/* â”€â”€â”€ Main Component â”€â”€â”€ */
 export default function Leaderboard() {
   const { user, isAdmin, isMentor } = useContext(AuthContext);
   const [tab, setTab] = useState('general');
@@ -273,7 +273,7 @@ export default function Leaderboard() {
 
       {/* Top-3 Podium */}
       {top3.length >= 3 && (
-        <div className="grid grid-cols-3 gap-4 items-end pt-6">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 items-end pt-6">
           {[2, 1, 3].map(place => {
             const entry = top3.find(e => e.rank === place);
             if (!entry) return null;

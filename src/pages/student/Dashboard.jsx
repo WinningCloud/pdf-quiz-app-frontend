@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+﻿import { useEffect, useState, useContext } from 'react';
 import api from '../../api/axios';
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
@@ -75,7 +75,7 @@ export default function StudentDashboard() {
             <p className="text-sm font-bold text-teal-400 uppercase tracking-widest mb-1 flex items-center gap-2">
               <Sparkles className="w-4 h-4" /> Student Portal
             </p>
-            <h1 className="text-4xl font-black text-slate-100 font-display">
+            <h1 className="text-2xl sm:text-4xl font-black text-slate-100 font-display">
               {greeting}, {user?.full_name?.split(' ')[0] || 'Student'}!
             </h1>
             <p className="text-slate-400 mt-1">Track your progress and keep learning.</p>
@@ -93,7 +93,7 @@ export default function StudentDashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger-children">
         <StatCard title="Average Score" value={`${Math.round(avgScore)}%`} icon={<Trophy className="w-6 h-6" />} iconColor="text-amber-300" iconBg="bg-amber-500/10" subtitle={avgScore >= 70 ? 'Great performance!' : 'Keep practicing!'} trend={avgScore >= 70} />
         <StatCard title="Quizzes Completed" value={quizzesDone} icon={<CheckCircle className="w-6 h-6" />} iconColor="text-teal-300" iconBg="bg-teal-500/10" subtitle={quizzesDone > 0 ? 'Active learner' : 'Get started!'} trend={quizzesDone > 0} />
-        <StatCard title="Best Topic" value={typeof topTopic === 'string' ? (topTopic.length > 15 ? topTopic.slice(0, 15) + '…' : topTopic) : 'N/A'} icon={<Target className="w-6 h-6" />} iconColor="text-emerald-300" iconBg="bg-emerald-500/10" subtitle="Your strongest area" isText />
+        <StatCard title="Best Topic" value={typeof topTopic === 'string' ? (topTopic.length > 15 ? topTopic.slice(0, 15) + 'â€¦' : topTopic) : 'N/A'} icon={<Target className="w-6 h-6" />} iconColor="text-emerald-300" iconBg="bg-emerald-500/10" subtitle="Your strongest area" isText />
         <StatCard title="Consistency" value={`${Math.round(streak)}%`} icon={<Flame className="w-6 h-6" />} iconColor="text-orange-300" iconBg="bg-orange-500/10" subtitle="Study consistency" trend={streak >= 50} />
       </div>
 
@@ -167,14 +167,14 @@ export default function StudentDashboard() {
                       {attempt.time_taken_minutes && <span className="text-xs text-slate-500 flex items-center gap-1"><Clock className="w-3 h-3" />{attempt.time_taken_minutes.toFixed(1)}m</span>}
                     </div>
                   </div>
-                  <Link to={`/quiz/result/${attempt.attempt_id}`} state={attempt} className="text-teal-400 opacity-0 group-hover:opacity-100 transition"><ArrowRight className="w-5 h-5" /></Link>
+                  <Link to={`/quiz/result/${attempt.attempt_id}`} state={attempt} className="text-teal-400 sm:opacity-0 sm:group-hover:opacity-100 transition"><ArrowRight className="w-5 h-5" /></Link>
                 </div>
               );
               }) : (
                 <div className="py-12 text-center text-slate-500">
                   <Clock className="w-8 h-8 mx-auto mb-2 opacity-50" />
                   <p className="text-sm">No quiz attempts yet</p>
-                  <Link to="/quizzes" className="text-teal-400 text-sm font-bold mt-2 inline-block hover:underline">Take your first quiz →</Link>
+                  <Link to="/quizzes" className="text-teal-400 text-sm font-bold mt-2 inline-block hover:underline">Take your first quiz â†’</Link>
                 </div>
               )}
             </div>
@@ -234,7 +234,7 @@ function StatCard({ title, value, icon, iconColor, iconBg, subtitle, trend, isTe
       <div className="flex justify-between items-start mb-3">
         <div className={`p-2.5 rounded-xl ${iconBg} ${iconColor} group-hover:scale-110 transition-transform`}>{icon}</div>
         {trend !== undefined && (
-          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase ${trend ? 'bg-emerald-500/10 text-emerald-300' : 'bg-slate-800 text-slate-500'}`}>{trend ? '↑ Good' : '→ Improve'}</span>
+          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase ${trend ? 'bg-emerald-500/10 text-emerald-300' : 'bg-slate-800 text-slate-500'}`}>{trend ? 'â†‘ Good' : 'â†’ Improve'}</span>
         )}
       </div>
       <h4 className="text-slate-400 text-xs font-bold uppercase tracking-wider">{title}</h4>

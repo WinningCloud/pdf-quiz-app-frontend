@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
@@ -118,7 +118,7 @@ export default function PDFLibrary() {
 
   return (
     <div className="flex flex-col gap-4 animate-fade-in h-[calc(100vh-3rem)]">
-      <header className="flex justify-between items-center">
+      <header className="flex flex-wrap gap-3 justify-between items-center">
         <div>
           <h1 className="text-2xl font-black text-slate-100 tracking-tight font-display">PDF Library</h1>
           <p className="text-slate-400 font-medium text-sm">Convert your documents into interactive learning data.</p>
@@ -133,7 +133,7 @@ export default function PDFLibrary() {
 
       {/* Upload Section */}
       <div className="bg-slate-900/70 p-4 rounded-2xl border border-slate-800 shadow-2xl shadow-slate-900/40 relative overflow-hidden">
-        <form onSubmit={handleUpload} className="grid md:grid-cols-[1fr_1fr_auto] gap-3 items-end relative z-10">
+        <form onSubmit={handleUpload} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1fr_1fr_auto] gap-3 items-end relative z-10">
           <div className="space-y-1">
             <label className="text-[10px] font-bold text-slate-500 uppercase ml-1">Document Title</label>
             <input 
@@ -256,7 +256,7 @@ export default function PDFLibrary() {
 
       {/* PDF Viewer Modal */}
       {viewingPdfId && createPortal(
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-6 animate-fade-in" onClick={closePdfViewer}>
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-3 sm:p-6 animate-fade-in" onClick={closePdfViewer}>
           <div className="bg-slate-900 rounded-3xl border border-slate-700 shadow-2xl w-full max-w-5xl h-[85vh] flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800">
               <h3 className="text-lg font-bold text-slate-100 flex items-center gap-2">
@@ -290,7 +290,7 @@ export default function PDFLibrary() {
 
       {/* Generate Quiz Modal */}
       {showGenerateModal && createPortal(
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-6 animate-fade-in" onClick={() => setShowGenerateModal(null)}>
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-3 sm:p-6 animate-fade-in" onClick={() => setShowGenerateModal(null)}>
           <div className="bg-slate-900 rounded-2xl border border-slate-700 shadow-2xl w-full max-w-md overflow-hidden" onClick={e => e.stopPropagation()}>
             <div className="px-6 py-4 border-b border-slate-800">
               <h3 className="text-lg font-bold text-slate-100">Generate Quiz</h3>

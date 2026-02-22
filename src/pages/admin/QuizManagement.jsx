@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import api from '../../api/axios';
 import { useToast } from '../../hooks/useToast';
@@ -191,7 +191,7 @@ export default function QuizManagement() {
       {/* Header */}
       <header className="flex justify-between items-end">
         <div>
-          <h1 className="text-3xl font-black text-slate-100 font-display">Quiz Management</h1>
+          <h1 className="text-xl sm:text-3xl font-black text-slate-100 font-display">Quiz Management</h1>
           <p className="text-slate-400 font-medium">Review, publish, unpublish, or remove AI-generated quizzes.</p>
         </div>
         <button 
@@ -263,7 +263,7 @@ export default function QuizManagement() {
                 {(quiz.status === 'generated' || quiz.status === 'published') && (
                   <button
                     onClick={() => quiz.share_code ? copyShareLink(quiz.share_code) : handleShare(quiz)}
-                    className={`p-1.5 rounded-lg transition opacity-0 group-hover:opacity-100 ${
+                    className={`p-1.5 rounded-lg transition sm:opacity-0 sm:group-hover:opacity-100 ${
                       quiz.share_code 
                         ? 'text-teal-400 hover:bg-teal-500/10' 
                         : 'text-slate-600 hover:text-teal-400 hover:bg-teal-500/10'
@@ -276,7 +276,7 @@ export default function QuizManagement() {
                 <button
                   onClick={() => handleDelete(quiz.id)}
                   disabled={deletingId === quiz.id}
-                  className="p-1.5 text-slate-600 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition opacity-0 group-hover:opacity-100"
+                  className="p-1.5 text-slate-600 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition sm:opacity-0 sm:group-hover:opacity-100"
                   title="Delete quiz"
                 >
                   {deletingId === quiz.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}

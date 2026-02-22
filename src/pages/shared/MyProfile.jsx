@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from 'react';
+﻿import { useState, useEffect, useContext, useRef } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import api from '../../api/axios';
 import {
@@ -14,7 +14,7 @@ const PURPOSE_OPTIONS = [
   'Other',
 ];
 
-/* ─── Avatar gradient from name ─── */
+/* â”€â”€â”€ Avatar gradient from name â”€â”€â”€ */
 const AVATAR_GRADIENTS = [
   'from-rose-500 to-pink-600',
   'from-violet-500 to-purple-600',
@@ -144,7 +144,7 @@ export default function MyProfile() {
   };
 
   const formatDate = (d) =>
-    d ? new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '—';
+    d ? new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'â€”';
 
   if (!user) return null;
 
@@ -204,7 +204,7 @@ export default function MyProfile() {
                 )}
               </div>
               {/* Avatar overlay buttons */}
-              <div className="absolute inset-0 rounded-2xl bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
+              <div className="absolute inset-0 rounded-2xl bg-black/50 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
                 <button
                   onClick={() => fileInputRef.current?.click()}
                   disabled={uploadingAvatar}
@@ -252,7 +252,7 @@ export default function MyProfile() {
                 ? 'bg-blue-500/10 text-blue-300 border border-blue-500/20'
                 : 'bg-slate-700/50 text-slate-300 border border-slate-600/50'
             }`}>
-              {user.auth_provider === 'google' ? '🔵 Google' : '🔑 Local'}
+              {user.auth_provider === 'google' ? 'ðŸ”µ Google' : 'ðŸ”‘ Local'}
             </span>
           </div>
 
@@ -326,7 +326,7 @@ export default function MyProfile() {
           {/* Read-only Info */}
           <div className="border-t border-slate-800 pt-5">
             <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Account Info</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
               <div className="flex items-center gap-2.5 px-4 py-3 bg-slate-950/30 rounded-xl border border-slate-800/50">
                 <Calendar className="w-4 h-4 text-slate-500" />
                 <div>

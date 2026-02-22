@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import api from '../../api/axios';
 import { Link } from 'react-router-dom';
 import {
@@ -53,7 +53,7 @@ export default function AvailableQuizzes() {
             <p className="text-sm font-bold text-teal-400 uppercase tracking-widest mb-1 flex items-center gap-2">
               <Sparkles className="w-4 h-4" /> Quiz Library
             </p>
-            <h1 className="text-4xl font-black text-slate-100 font-display">Ready to learn?</h1>
+            <h1 className="text-2xl sm:text-4xl font-black text-slate-100 font-display">Ready to learn?</h1>
             <p className="text-slate-400 mt-1">{quizzes.length} quizzes available for you</p>
           </div>
         </div>

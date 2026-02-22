@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import api from '../../api/axios';
 import {
@@ -72,7 +72,7 @@ export default function MentorManagement() {
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap gap-3 items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
             <GraduationCap className="text-teal-400" size={28}/> Mentor Management

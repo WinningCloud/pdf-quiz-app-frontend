@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+﻿import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
 import { AuthContext } from '../../context/AuthContext';
@@ -54,7 +54,7 @@ export default function AdminDashboard() {
           <Sparkles className="w-4 h-4 text-teal-400" />
           <p className="text-sm font-bold text-teal-400 uppercase tracking-widest">{isMentor ? 'Mentor Dashboard' : 'Control Center'}</p>
         </div>
-        <h1 className="text-4xl font-black text-slate-100 font-display">{isMentor ? 'Classroom Overview' : 'System Overview'}</h1>
+        <h1 className="text-2xl sm:text-4xl font-black text-slate-100 font-display">{isMentor ? 'Classroom Overview' : 'System Overview'}</h1>
         <p className="text-slate-400 mt-1">{isMentor ? 'Monitor your classrooms, students, and quiz performance.' : 'Monitor platform activity and AI generation status.'}</p>
       </header>
 
@@ -136,7 +136,7 @@ export default function AdminDashboard() {
                 <School className="w-8 h-8 text-slate-700 mx-auto mb-2" />
                 <p className="text-sm text-slate-500">No classrooms yet</p>
                 <button onClick={() => navigate('/admin/classrooms')} className="mt-2 text-xs text-teal-400 hover:text-teal-300 font-bold">
-                  Create one →
+                  Create one â†’
                 </button>
               </div>
             )}

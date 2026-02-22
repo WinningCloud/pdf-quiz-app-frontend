@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+﻿import { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/common/Navbar';
@@ -13,7 +13,7 @@ import {
   Trophy, School, UserPlus, Share2, Medal
 } from 'lucide-react';
 
-/* ═══════════ Scroll-reveal hook ═══════════ */
+/* â•â•â•â•â•â•â•â•â•â•â• Scroll-reveal hook â•â•â•â•â•â•â•â•â•â•â• */
 function useScrollReveal() {
   const ref = useRef(null);
   useEffect(() => {
@@ -42,8 +42,8 @@ export default function LandingPage() {
     <div className="min-h-screen font-sans selection:bg-teal-400 selection:text-slate-900">
       <Navbar />
       
-      {/* ═══════════════════════ HERO ═══════════════════════ */}
-      <section id="hero" className="relative pt-28 pb-40 overflow-hidden">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section id="hero" className="relative pt-20 pb-20 sm:pt-28 sm:pb-40 overflow-hidden">
         {/* Decorative Background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-[-15%] left-[-10%] w-[42%] h-[42%] bg-teal-500/15 blur-[140px] rounded-full"></div>
@@ -63,28 +63,28 @@ export default function LandingPage() {
             <span className="text-base font-bold text-slate-200">Powered by Advanced AI Models</span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-extrabold text-slate-100 leading-[1.05] mb-8 tracking-tight font-display animate-fade-in-up">
+          <h1 className="text-3xl sm:text-5xl md:text-8xl font-extrabold text-slate-100 leading-[1.05] mb-8 tracking-tight font-display animate-fade-in-up">
             Transform Any PDF Into <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-sky-300 animate-gradient">Interactive Quizzes</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-12 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
             Upload your textbooks, lecture notes, or study materials and watch our AI analyze, 
-            extract key concepts, and generate high-quality quiz questions — all in minutes, not hours. 
+            extract key concepts, and generate high-quality quiz questions â€” all in minutes, not hours. 
             Perfect for <span className="text-teal-300 font-semibold">educators</span>, <span className="text-sky-300 font-semibold">mentors</span>, <span className="text-violet-300 font-semibold">students</span>, and <span className="text-emerald-300 font-semibold">training teams</span>.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             {user ? (
-              <Link to={dashboardPath} className="group bg-teal-500 text-slate-900 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-teal-400 shadow-2xl shadow-teal-900/40 flex items-center justify-center gap-2 transition-all active:scale-95 hover:shadow-teal-800/50">
+              <Link to={dashboardPath} className="group bg-teal-500 text-slate-900 px-8 py-4 sm:px-12 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl hover:bg-teal-400 shadow-2xl shadow-teal-900/40 flex items-center justify-center gap-2 transition-all active:scale-95 hover:shadow-teal-800/50">
                 Enter Dashboard <ChevronRight className="group-hover:translate-x-1 transition-transform"/>
               </Link>
             ) : (
               <>
-                <Link to="/register" className="group bg-teal-500 text-slate-900 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-teal-400 shadow-xl shadow-teal-900/40 flex items-center justify-center gap-2 transition-all active:scale-95 hover:shadow-teal-800/50">
+                <Link to="/register" className="group bg-teal-500 text-slate-900 px-8 py-4 sm:px-12 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl hover:bg-teal-400 shadow-xl shadow-teal-900/40 flex items-center justify-center gap-2 transition-all active:scale-95 hover:shadow-teal-800/50">
                   Get Started Free <ChevronRight className="group-hover:translate-x-1 transition-transform"/>
                 </Link>
-                <Link to="/login" className="bg-slate-900/70 text-slate-200 border border-slate-700 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-slate-900 transition-all active:scale-95">
+                <Link to="/login" className="bg-slate-900/70 text-slate-200 border border-slate-700 px-8 py-4 sm:px-12 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl hover:bg-slate-900 transition-all active:scale-95">
                   Sign In with Google
                 </Link>
               </>
@@ -92,7 +92,7 @@ export default function LandingPage() {
           </div>
 
           {/* Quick stats below hero */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.45s' }}>
+          <div className="mt-10 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.45s' }}>
             {[
               { value: 'AI-Powered', label: 'Quiz Generation' },
               { value: 'Instant', label: 'PDF Processing' },
@@ -108,15 +108,15 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ═══════════════════════ HOW IT WORKS ═══════════════════════ */}
-      <RevealSection id="how-it-works" className="py-28 relative overflow-hidden">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HOW IT WORKS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <RevealSection id="how-it-works" className="py-14 sm:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/60 to-transparent -z-10"></div>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10 sm:mb-20">
             <div className="inline-flex items-center gap-2 text-teal-400 text-sm font-black uppercase tracking-[0.25em] mb-5">
               <Sparkles className="w-5 h-5" /> Simple Process
             </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">How It Works</h2>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">How It Works</h2>
             <p className="text-lg text-slate-400 max-w-xl mx-auto">From PDF to quiz-ready content in three simple steps. No complex setup, no learning curve.</p>
           </div>
 
@@ -129,7 +129,7 @@ export default function LandingPage() {
               icon={<Upload className="w-8 h-8" />}
               color="teal"
               title="Upload Your PDF"
-              desc="Drag & drop any PDF document — textbooks, lecture notes, research papers, training manuals, or study guides. Our system accepts files up to 100MB."
+              desc="Drag & drop any PDF document â€” textbooks, lecture notes, research papers, training manuals, or study guides. Our system accepts files up to 100MB."
             />
             <StepCard 
               step="02"
@@ -149,15 +149,15 @@ export default function LandingPage() {
         </div>
       </RevealSection>
 
-      {/* ═══════════════════════ FEATURES ═══════════════════════ */}
-      <RevealSection id="features" className="py-28 bg-slate-950/40 relative">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FEATURES â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <RevealSection id="features" className="py-14 sm:py-28 bg-slate-950/40 relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10 sm:mb-20">
             <div className="inline-flex items-center gap-2 text-sky-400 text-sm font-black uppercase tracking-[0.25em] mb-5">
               <Zap className="w-5 h-5" /> Platform Features
             </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">Everything You Need to Create Smarter Quizzes</h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">A complete AI-powered platform that handles the entire workflow — from document ingestion to student performance tracking.</p>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">Everything You Need to Create Smarter Quizzes</h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">A complete AI-powered platform that handles the entire workflow â€” from document ingestion to student performance tracking.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 stagger-children">
@@ -165,13 +165,13 @@ export default function LandingPage() {
               icon={<FileText className="w-7 h-7 text-white" />}
               iconBg="bg-teal-500"
               title="Deep PDF Understanding"
-              desc="Goes beyond OCR — our AI comprehends context, identifies core concepts, and maps knowledge hierarchies within your documents."
+              desc="Goes beyond OCR â€” our AI comprehends context, identifies core concepts, and maps knowledge hierarchies within your documents."
             />
             <FeatureCard 
               icon={<Zap className="w-7 h-7 text-white" />}
               iconBg="bg-sky-500"
               title="Instant Question Generation"
-              desc="Generate multiple-choice, true/false, and open-ended questions in seconds. Choose how many questions you need — from 5 to 50+."
+              desc="Generate multiple-choice, true/false, and open-ended questions in seconds. Choose how many questions you need â€” from 5 to 50+."
             />
             <FeatureCard 
               icon={<BarChart3 className="w-7 h-7 text-white" />}
@@ -201,18 +201,18 @@ export default function LandingPage() {
         </div>
       </RevealSection>
 
-      {/* ═══════════════════════ DETAILED BREAKDOWN ═══════════════════════ */}
-      <RevealSection id="who-its-for" className="py-28 relative overflow-hidden">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• DETAILED BREAKDOWN â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <RevealSection id="who-its-for" className="py-14 sm:py-28 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           {/* For Educators */}
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mb-32">
             <div>
               <div className="inline-flex items-center gap-2 text-teal-400 text-sm font-black uppercase tracking-[0.25em] mb-5">
                 <GraduationCap className="w-5 h-5" /> For Educators
               </div>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-slate-100 mb-5 font-display">Save Hours of Quiz Preparation</h3>
+              <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-slate-100 mb-5 font-display">Save Hours of Quiz Preparation</h3>
               <p className="text-lg text-slate-400 leading-relaxed mb-8">
-                Creating quizzes manually from textbooks is tedious and time-consuming. PDF2Quiz AI automates the entire process — 
+                Creating quizzes manually from textbooks is tedious and time-consuming. PDF2Quiz AI automates the entire process â€” 
                 upload your course material and get a complete question bank in minutes. Focus on teaching, not paperwork.
               </p>
               <ul className="space-y-4">
@@ -261,7 +261,7 @@ export default function LandingPage() {
           </div>
 
           {/* For Students */}
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div className="order-2 md:order-1 relative">
               <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 shadow-2xl hover-lift">
                 <div className="flex items-center gap-3 mb-6">
@@ -304,7 +304,7 @@ export default function LandingPage() {
               <div className="inline-flex items-center gap-2 text-sky-400 text-sm font-black uppercase tracking-[0.25em] mb-5">
                 <BookOpen className="w-5 h-5" /> For Students
               </div>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-slate-100 mb-5 font-display">Learn Smarter, Not Harder</h3>
+              <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-slate-100 mb-5 font-display">Learn Smarter, Not Harder</h3>
               <p className="text-lg text-slate-400 leading-relaxed mb-8">
                 Test your knowledge with AI-generated quizzes tailored to your course material. 
                 Get instant feedback, track your progress over time, and identify exactly which topics need more attention.
@@ -328,30 +328,30 @@ export default function LandingPage() {
         </div>
       </RevealSection>
 
-      {/* ═══════════════════════ MENTORS & CLASSROOMS ═══════════════════════ */}
-      <RevealSection className="py-28 bg-slate-950/40 relative overflow-hidden">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• MENTORS & CLASSROOMS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <RevealSection className="py-14 sm:py-28 bg-slate-950/40 relative overflow-hidden">
         <div className="absolute top-[10%] right-[-5%] w-[30%] h-[40%] bg-violet-500/8 blur-[120px] rounded-full -z-10"></div>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10 sm:mb-20">
             <div className="inline-flex items-center gap-2 text-violet-400 text-sm font-black uppercase tracking-[0.25em] mb-5">
               <School className="w-5 h-5" /> Mentor System
             </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">Classrooms & Mentorship Built In</h2>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">Classrooms & Mentorship Built In</h2>
             <p className="text-lg text-slate-400 max-w-3xl mx-auto">
               Go beyond simple quiz sharing. Create virtual classrooms, invite students with join codes, 
-              share curated quizzes, and monitor progress — all from one powerful mentor dashboard.
+              share curated quizzes, and monitor progress â€” all from one powerful mentor dashboard.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
-            {/* Left — Feature list */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mb-20">
+            {/* Left â€” Feature list */}
             <div>
               <div className="space-y-6">
                 <MentorFeatureRow
                   icon={<School className="w-6 h-6 text-violet-400" />}
                   color="violet"
                   title="Create Classrooms"
-                  desc="Set up dedicated classrooms for each course or cohort. Students join with a simple invite code — no emails required."
+                  desc="Set up dedicated classrooms for each course or cohort. Students join with a simple invite code â€” no emails required."
                 />
                 <MentorFeatureRow
                   icon={<Share2 className="w-6 h-6 text-teal-400" />}
@@ -369,12 +369,12 @@ export default function LandingPage() {
                   icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
                   color="emerald"
                   title="Mentor Analytics"
-                  desc="Get aggregated performance insights — average scores, completion rates, and top performers at a glance."
+                  desc="Get aggregated performance insights â€” average scores, completion rates, and top performers at a glance."
                 />
               </div>
             </div>
 
-            {/* Right — Visual mockup */}
+            {/* Right â€” Visual mockup */}
             <div className="relative">
               <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 shadow-2xl hover-lift">
                 <div className="flex items-center gap-3 mb-6">
@@ -385,7 +385,7 @@ export default function LandingPage() {
                 </div>
                 <div className="mb-5">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-base font-bold text-slate-200">CS 301 — Data Structures</h4>
+                    <h4 className="text-base font-bold text-slate-200">CS 301 â€” Data Structures</h4>
                     <span className="text-xs font-bold bg-violet-500/20 text-violet-300 px-3 py-1 rounded-full">Active</span>
                   </div>
                   <div className="flex items-center gap-4 text-xs text-slate-500 mb-4">
@@ -420,12 +420,12 @@ export default function LandingPage() {
         </div>
       </RevealSection>
 
-      {/* ═══════════════════════ LEADERBOARDS ═══════════════════════ */}
-      <RevealSection className="py-28 relative overflow-hidden">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• LEADERBOARDS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <RevealSection className="py-14 sm:py-28 relative overflow-hidden">
         <div className="absolute bottom-[10%] left-[-5%] w-[30%] h-[40%] bg-amber-500/8 blur-[120px] rounded-full -z-10"></div>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Left — visual */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+            {/* Left â€” visual */}
             <div className="relative">
               <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 shadow-2xl hover-lift">
                 <div className="flex items-center gap-3 mb-6">
@@ -476,15 +476,15 @@ export default function LandingPage() {
               <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-amber-500/10 rounded-2xl blur-xl -z-10"></div>
             </div>
 
-            {/* Right — description */}
+            {/* Right â€” description */}
             <div>
               <div className="inline-flex items-center gap-2 text-amber-400 text-sm font-black uppercase tracking-[0.25em] mb-5">
                 <Trophy className="w-5 h-5" /> Leaderboards
               </div>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-slate-100 mb-5 font-display">Compete, Climb & Celebrate</h3>
+              <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-slate-100 mb-5 font-display">Compete, Climb & Celebrate</h3>
               <p className="text-lg text-slate-400 leading-relaxed mb-8">
                 Fuel engagement with built-in leaderboards. Students see where they rank globally and within 
-                each classroom — driving friendly competition and motivating consistent study habits.
+                each classroom â€” driving friendly competition and motivating consistent study habits.
               </p>
               <ul className="space-y-4">
                 {[
@@ -505,8 +505,8 @@ export default function LandingPage() {
         </div>
       </RevealSection>
 
-      {/* ═══════════════════════ STATS BANNER ═══════════════════════ */}
-      <section className="py-20 bg-gradient-to-r from-teal-500/10 via-sky-500/10 to-emerald-500/10 border-y border-slate-800/50">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• STATS BANNER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-teal-500/10 via-sky-500/10 to-emerald-500/10 border-y border-slate-800/50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <StatItem icon={<FileText className="w-7 h-7" />} value="PDF" label="Upload & Process" />
@@ -517,18 +517,18 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ═══════════════════════ USE CASES ═══════════════════════ */}
-      <RevealSection id="use-cases" className="py-28 relative">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• USE CASES â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <RevealSection id="use-cases" className="py-14 sm:py-28 relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10 sm:mb-20">
             <div className="inline-flex items-center gap-2 text-emerald-400 text-sm font-black uppercase tracking-[0.25em] mb-5">
               <Layers className="w-5 h-5" /> Use Cases
             </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">Built For Everyone Who Learns or Teaches</h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">Whether you're a university professor, a corporate trainer, or a student studying for exams — PDF2Quiz AI adapts to your needs.</p>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">Built For Everyone Who Learns or Teaches</h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">Whether you're a university professor, a corporate trainer, or a student studying for exams â€” PDF2Quiz AI adapts to your needs.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
             <UseCaseCard 
               icon={<GraduationCap className="w-7 h-7 text-teal-400" />}
               title="Universities"
@@ -553,20 +553,20 @@ export default function LandingPage() {
         </div>
       </RevealSection>
 
-      {/* ═══════════════════════ FAQ ═══════════════════════ */}
-      <RevealSection id="faq" className="py-28 bg-slate-950/40">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FAQ â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <RevealSection id="faq" className="py-14 sm:py-28 bg-slate-950/40">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 text-amber-400 text-sm font-black uppercase tracking-[0.25em] mb-5">
               <MessageSquare className="w-5 h-5" /> FAQ
             </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">Frequently Asked Questions</h2>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-100 mb-5 font-display">Frequently Asked Questions</h2>
           </div>
 
           <div className="space-y-4">
             <FaqItem 
               q="What types of PDFs can I upload?" 
-              a="Any text-based PDF works — textbooks, lecture notes, research papers, training manuals, study guides, and more. The AI works best with clearly structured educational content."
+              a="Any text-based PDF works â€” textbooks, lecture notes, research papers, training manuals, study guides, and more. The AI works best with clearly structured educational content."
             />
             <FaqItem 
               q="How does the AI generate questions?" 
@@ -578,7 +578,7 @@ export default function LandingPage() {
             />
             <FaqItem 
               q="What is the Mentor/Classroom system?" 
-              a="Mentors can create virtual classrooms, invite students via join codes, share quizzes to specific classrooms, and track student performance — all from a dedicated mentor dashboard."
+              a="Mentors can create virtual classrooms, invite students via join codes, share quizzes to specific classrooms, and track student performance â€” all from a dedicated mentor dashboard."
             />
             <FaqItem 
               q="How do Leaderboards work?" 
@@ -586,14 +586,14 @@ export default function LandingPage() {
             />
             <FaqItem 
               q="Is it free to use?" 
-              a="Yes — you can get started for free. Sign up with Google, and begin exploring the platform immediately."
+              a="Yes â€” you can get started for free. Sign up with Google, and begin exploring the platform immediately."
             />
           </div>
         </div>
       </RevealSection>
 
-      {/* ═══════════════════════ CTA ═══════════════════════ */}
-      <section id="get-started" className="py-32 relative overflow-hidden">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• CTA â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <section id="get-started" className="py-16 sm:py-32 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-[10%] left-[15%] w-[40%] h-[60%] bg-teal-500/10 blur-[120px] rounded-full"></div>
           <div className="absolute bottom-[10%] right-[10%] w-[35%] h-[50%] bg-sky-500/10 blur-[120px] rounded-full"></div>
@@ -603,7 +603,7 @@ export default function LandingPage() {
             <Sparkles className="w-5 h-5 text-teal-400" />
             <span className="text-base font-bold text-teal-300">Ready to get started?</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-extrabold text-slate-100 mb-8 font-display">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-slate-100 mb-8 font-display">
             Start Creating AI-Powered Quizzes Today
           </h2>
           <p className="text-xl text-slate-400 mb-12 max-w-xl mx-auto leading-relaxed">
@@ -611,15 +611,15 @@ export default function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-5">
             {user ? (
-              <Link to={dashboardPath} className="group bg-teal-500 text-slate-900 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-teal-400 shadow-2xl shadow-teal-900/40 flex items-center justify-center gap-2 transition-all active:scale-95 hover:shadow-teal-800/50">
+              <Link to={dashboardPath} className="group bg-teal-500 text-slate-900 px-8 py-4 sm:px-12 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl hover:bg-teal-400 shadow-2xl shadow-teal-900/40 flex items-center justify-center gap-2 transition-all active:scale-95 hover:shadow-teal-800/50">
                 Go to Dashboard <ArrowRight className="group-hover:translate-x-1 transition-transform"/>
               </Link>
             ) : (
               <>
-                <Link to="/register" className="group bg-teal-500 text-slate-900 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-teal-400 shadow-xl shadow-teal-900/40 flex items-center justify-center gap-2 transition-all active:scale-95 hover:shadow-teal-800/50">
+                <Link to="/register" className="group bg-teal-500 text-slate-900 px-8 py-4 sm:px-12 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl hover:bg-teal-400 shadow-xl shadow-teal-900/40 flex items-center justify-center gap-2 transition-all active:scale-95 hover:shadow-teal-800/50">
                   Create Free Account <ArrowRight className="group-hover:translate-x-1 transition-transform"/>
                 </Link>
-                <Link to="/login" className="bg-slate-900/70 text-slate-200 border border-slate-700 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-slate-900 transition-all active:scale-95">
+                <Link to="/login" className="bg-slate-900/70 text-slate-200 border border-slate-700 px-8 py-4 sm:px-12 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl hover:bg-slate-900 transition-all active:scale-95">
                   Sign In
                 </Link>
               </>
@@ -628,11 +628,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ═══════════════════════ FOOTER ═══════════════════════ */}
-      <footer className="bg-slate-950 text-slate-400 py-16 border-t border-slate-800">
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FOOTER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <footer className="bg-slate-950 text-slate-400 py-10 sm:py-16 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-2">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-12">
+            <div className="sm:col-span-2">
               <div className="text-white font-bold text-2xl mb-4 flex items-center gap-2 font-display">
                 <Logo size="md" />
               </div>
@@ -676,7 +676,7 @@ export default function LandingPage() {
   );
 }
 
-/* ═══════════════════════ SUB-COMPONENTS ═══════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• SUB-COMPONENTS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 function RevealSection({ children, className = '', id }) {
   const ref = useScrollReveal();

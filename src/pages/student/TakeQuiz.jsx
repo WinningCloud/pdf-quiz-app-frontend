@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useRef } from "react";
+﻿import { useEffect, useState, useMemo, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../../api/axios";
 import { useToast } from '../../hooks/useToast';
@@ -170,7 +170,7 @@ export default function TakeQuiz() {
       </div>
 
       {/* Question Card */}
-      <div className={`bg-slate-900/80 p-8 md:p-10 rounded-3xl shadow-2xl border border-slate-800 transition-all duration-300 ${animating ? 'opacity-0 translate-x-8' : 'opacity-100 translate-x-0 animate-fade-in-up'}`}>
+      <div className={`bg-slate-900/80 p-4 sm:p-8 md:p-10 rounded-3xl shadow-2xl border border-slate-800 transition-all duration-300 ${animating ? 'opacity-0 translate-x-8' : 'opacity-100 translate-x-0 animate-fade-in-up'}`}>
 
         <div className="flex items-center gap-2 text-xs text-teal-400 font-bold uppercase tracking-widest mb-4">
           <Zap className="w-3.5 h-3.5" /> Question {currentIdx + 1}
